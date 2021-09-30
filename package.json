@@ -1,0 +1,65 @@
+{
+  "name": "skf-tree",
+  "displayName": "skf-tree",
+  "description": "Security Knowledge Framework Checklist Treeview",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.46.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:skf-tree.SKFChecklist",
+    "onView: SKFChecklistItems"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "skfChecklistRequirements",
+          "name": "OWASP SKF Checklist"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "skfChecklistRequirements",
+        "contents": "Get different knowledgebase items based on your selected security control from the checklist. [Learn more](https://securityknowledgeframework.org).\n[Get Knowledgebase Items](command:skf-tree.SKFChecklist)"
+      }
+    ],
+    "commands": [
+      {
+        "command": "skf-tree.SKFChecklist",
+        "title": "OWASP Security Knowledge Framework Checklist"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.20.19",
+    "@types/node-fetch": "^2.5.12",
+    "@types/vscode": "^1.46.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.19.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.2.1",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0"
+  },
+  "dependencies": {
+    "jsonc-parser": "^3.0.0",
+    "node-fetch": "^2.6.1"
+  }
+}
